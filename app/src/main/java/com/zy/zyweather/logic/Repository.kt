@@ -1,6 +1,7 @@
 package com.zy.zyweather.logic
 
 import androidx.lifecycle.liveData
+import com.zy.zyweather.logic.dao.PlaceDao
 import com.zy.zyweather.logic.model.Place
 import com.zy.zyweather.logic.model.Weather
 import com.zy.zyweather.logic.network.NetworkManager
@@ -59,4 +60,10 @@ object Repository {
             }
             emit(result)
         }
+
+    fun savePlace(place: Place) = PlaceDao.savePlace(place)
+
+    fun getSavedPlace() = PlaceDao.getSavedPlace()
+
+    fun isPlaceSaved() = PlaceDao.isPlaceSaved()
 }
