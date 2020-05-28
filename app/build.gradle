@@ -15,10 +15,21 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+    signingConfigs { //签名配置
+        release {
+            storeFile file(KEY_PATH)     //签名文件
+            storePassword KEY_PWD                  //签名文件密码
+            keyAlias ALIAS_NAME                          //别名
+            keyPassword ALIAS_PWD                    //密码
+            v1SigningEnabled true                       //使用JAR签名方案
+            v2SigningEnabled true                       //使用APK签名方案
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 
